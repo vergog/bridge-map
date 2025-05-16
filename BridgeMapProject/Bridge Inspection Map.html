@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1976d2">
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d0ea9f7b94048502c9d6ac5c9d6a0d0e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<script>
+const bridgeData = [{"bin": "1033900", "lat": 44.540361, "lon": -73.49981295, "region": "7", "county": "Clinton", "due": "4/12", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "April"}, {"bin": "1094730", "lat": 44.54043201, "lon": -73.49895504, "region": "7", "county": "Clinton", "due": "4/12", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "April"}, {"bin": "2219630", "lat": 44.69545096, "lon": -73.45111204, "region": "7", "county": "Clinton", "due": "4/12", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "Yes", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "April"}, {"bin": "3335840", "lat": 44.63627405, "lon": -73.52477106, "region": "7", "county": "Clinton", "due": "6/15", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "June"}, {"bin": "3335850", "lat": 44.62996998, "lon": -73.533619, "region": "7", "county": "Clinton", "due": "6/15", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "June"}, {"bin": "3335890", "lat": 44.59415902, "lon": -73.49621203, "region": "7", "county": "Clinton", "due": "6/15", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "June"}, {"bin": "3335900", "lat": 44.59510402, "lon": -73.50320099, "region": "7", "county": "Clinton", "due": "6/14", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "June"}, {"bin": "1000871", "lat": 44.69662699, "lon": -73.49036305, "region": "7", "county": "Clinton", "due": "5/16", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "Yes", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "May"}, {"bin": "1000872", "lat": 44.69664301, "lon": -73.49001606, "region": "7", "county": "Clinton", "due": "5/16", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "Yes", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/8", "issued": "None", "due_month": "May"}, {"bin": "1000850", "lat": 44.661952, "lon": -73.73291501, "region": "7", "county": "Clinton", "due": "4/26", "prev_gr": "5", "spans": "2", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-07", "completed": "4/9", "issued": "None", "due_month": "April"}, {"bin": "1060660", "lat": 44.70593704, "lon": -73.62021305, "region": "7", "county": "Clinton", "due": "4/11", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "Yes", "field_time": 1.0, "week": "Week of 04-07", "completed": "4/9", "issued": "None", "due_month": "April"}, {"bin": "3336590", "lat": 44.90518195, "lon": -73.80056001, "region": "7", "county": "Clinton", "due": "6/12", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "Yes", "field_time": 1.0, "week": "Week of 04-07", "completed": "4/9", "issued": "None", "due_month": "June"}, {"bin": "3336620", "lat": 44.88414399, "lon": -73.87393695, "region": "7", "county": "Clinton", "due": "4/13", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "Yes", "field_time": 1.0, "week": "Week of 04-07", "completed": "4/9", "issued": "None", "due_month": "April"}, {"bin": "3336670", "lat": 44.77087098, "lon": -73.49360203, "region": "7", "county": "Clinton", "due": "6/14", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/9", "issued": "None", "due_month": "June"}, {"bin": "3359940", "lat": 44.6407, "lon": -73.77998595, "region": "7", "county": "Clinton", "due": "4/26", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "Yes", "field_time": 0.5, "week": "Week of 04-07", "completed": "4/9", "issued": "None", "due_month": "April"}, {"bin": "3207250", "lat": 42.76334197, "lon": -75.90368895, "region": "3", "county": "Cortland", "due": "4/3", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.5, "week": "Week of 04-14", "completed": "4/16", "issued": "None", "due_month": "April"}, {"bin": "3207650", "lat": 42.48924096, "lon": -76.08934194, "region": "3", "county": "Cortland", "due": "4/11", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-14", "completed": "4/16", "issued": "None", "due_month": "April"}, {"bin": "3207790", "lat": 42.59431699, "lon": -76.09461201, "region": "3", "county": "Cortland", "due": "4/5", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-14", "completed": "4/16", "issued": "None", "due_month": "April"}, {"bin": "3367720", "lat": 42.59348301, "lon": -75.90154996, "region": "3", "county": "Cortland", "due": "4/3", "prev_gr": "5", "spans": "2", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-14", "completed": "4/16", "issued": "None", "due_month": "April"}, {"bin": "3367740", "lat": 42.61361897, "lon": -76.21412902, "region": "3", "county": "Cortland", "due": "4/11", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-14", "completed": "4/16", "issued": "RF 002", "due_month": "April"}, {"bin": "1031421", "lat": 42.69568897, "lon": -76.15703102, "region": "3", "county": "Cortland", "due": "4/10", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-14", "completed": "4/17", "issued": "None", "due_month": "April"}, {"bin": "1031422", "lat": 42.69561996, "lon": -76.15651698, "region": "3", "county": "Cortland", "due": "4/17", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-14", "completed": "4/17", "issued": "None", "due_month": "April"}, {"bin": "1031450", "lat": 42.74626903, "lon": -76.13781695, "region": "3", "county": "Cortland", "due": "4/17", "prev_gr": "4", "spans": "5", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "UBIU, WZTC", "spe": "Yes", "stds": "Yes", "field_time": 2.5, "week": "Week of 04-14", "completed": "4/17", "issued": "None", "due_month": "April"}, {"bin": "1031701", "lat": 43.13536098, "lon": -76.11910302, "region": "3", "county": "Onondaga", "due": "4/20", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-21", "completed": "4/23", "issued": "None", "due_month": "April"}, {"bin": "1031702", "lat": 43.135304, "lon": -76.11883406, "region": "3", "county": "Onondaga", "due": "4/20", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-21", "completed": "4/23", "issued": "None", "due_month": "April"}, {"bin": "2207820", "lat": 42.60472896, "lon": -76.19171095, "region": "3", "county": "Cortland", "due": "4/26", "prev_gr": "6", "spans": "2", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 04-21", "completed": "4/23", "issued": "None", "due_month": "April"}, {"bin": "2207870", "lat": 42.604311, "lon": -76.18572499, "region": "3", "county": "Cortland", "due": "4/3", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-21", "completed": "4/23", "issued": "None", "due_month": "April"}, {"bin": "2207880", "lat": 42.60613598, "lon": -76.17483304, "region": "3", "county": "Cortland", "due": "4/5", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.5, "week": "Week of 04-21", "completed": "4/23", "issued": "None", "due_month": "April"}, {"bin": "1051159", "lat": 43.05477605, "lon": -76.11559495, "region": "3", "county": "Onondaga", "due": "4/24", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-21", "completed": "4/23", "issued": "None", "due_month": "April"}, {"bin": "1008400", "lat": 42.62783103, "lon": -76.18115598, "region": "3", "county": "Cortland", "due": "5/3", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "BT, WZTC", "spe": "Yes", "stds": "None", "field_time": 2.0, "week": "Week of 04-21", "completed": "4/24", "issued": "None", "due_month": "May"}, {"bin": "1010431", "lat": 42.60913303, "lon": -76.16645994, "region": "3", "county": "Cortland", "due": "4/10", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "BT, WZTC", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-21", "completed": "4/24", "issued": "None", "due_month": "April"}, {"bin": "1010432", "lat": 42.60954501, "lon": -76.16627696, "region": "3", "county": "Cortland", "due": "4/10", "prev_gr": "5", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "BT, WZTC", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 04-21", "completed": "4/24", "issued": "SF 003, RF 004", "due_month": "April"}, {"bin": "3210030", "lat": 42.58638896, "lon": -76.29019596, "region": "3", "county": "Tompkins", "due": "5/5", "prev_gr": "4", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 05-12", "completed": "5/14", "issued": "None", "due_month": "May"}, {"bin": "3210280", "lat": 42.48452703, "lon": -76.292485, "region": "3", "county": "Tompkins", "due": "5/5", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.0, "week": "Week of 05-12", "completed": "5/14", "issued": "None", "due_month": "May"}, {"bin": "3210300", "lat": 42.48663502, "lon": -76.302687, "region": "3", "county": "Tompkins", "due": "5/15", "prev_gr": "4", "spans": "1", "flags": "No", "flags_info": "None", "posting": "Yes", "posting_info": "25.0", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 2.0, "week": "Week of 05-12", "completed": "5/14", "issued": "None", "due_month": "May"}, {"bin": "1094700", "lat": 42.39381602, "lon": -76.35564999, "region": "3", "county": "Tompkins", "due": "5/23", "prev_gr": "6", "spans": "2", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 05-12", "completed": "5/14", "issued": "None", "due_month": "May"}, {"bin": "2210540", "lat": 42.44386001, "lon": -76.49702797, "region": "3", "county": "Tompkins", "due": "5/11", "prev_gr": "4", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.5, "week": "Week of 05-12", "completed": "5/15", "issued": "None", "due_month": "May"}, {"bin": "3210180", "lat": 42.287225, "lon": -76.68920503, "region": "3", "county": "Tompkins", "due": "5/15", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "Yes", "field_time": 1.0, "week": "Week of 05-12", "completed": "5/15", "issued": "None", "due_month": "May"}, {"bin": "5521370", "lat": 42.40242802, "lon": -76.58990504, "region": "3", "county": "Tompkins", "due": "5/15", "prev_gr": "4", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 05-12", "completed": "5/15", "issued": "None", "due_month": "May"}, {"bin": "1048110", "lat": 42.60629605, "lon": -76.82922304, "region": "3", "county": "Seneca", "due": "5/11", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Week of 05-12", "completed": "5/15", "issued": "None", "due_month": "May"}, {"bin": "3313940", "lat": 42.64731998, "lon": -76.84621203, "region": "3", "county": "Seneca", "due": "4/27", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "Yes", "field_time": 1.5, "week": "Week of 05-12", "completed": "5/15", "issued": "None", "due_month": "April"}, {"bin": "1051149", "lat": 43.05329798, "lon": -76.12186796, "region": "3", "county": "Onondaga", "due": "5/17", "prev_gr": "7", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.5, "week": "Week of 05-19", "completed": NaN, "issued": "None", "due_month": "May"}, {"bin": "1064700", "lat": 43.22722603, "lon": -76.27509601, "region": "3", "county": "Oswego", "due": "6/13", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "Yes", "stds": "None", "field_time": 1.5, "week": "Week of 05-19", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "4433130", "lat": 43.11313099, "lon": -76.43922304, "region": "3", "county": "Onondaga", "due": "7/11", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "BT, WZTC, BB", "spe": "Yes", "stds": "None", "field_time": 3.0, "week": "Week of 05-19", "completed": NaN, "issued": "None", "due_month": "July"}, {"bin": "4001970", "lat": 42.9629705, "lon": -76.7383455, "region": "3", "county": "Seneca", "due": "6/3", "prev_gr": "4", "spans": "3", "flags": "Yes", "flags_info": "YF", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "BT, UBIU, WZTC", "spe": "Yes", "stds": "None", "field_time": 5.0, "week": "Week of 05-19", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "4021800", "lat": 43.01746502, "lon": -76.71201006, "region": "3", "county": "Seneca", "due": "9/3", "prev_gr": "3", "spans": "5", "flags": "Yes", "flags_info": "SF, YFx2", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "BT, WZTC, BB", "spe": "Yes", "stds": "None", "field_time": 10.0, "week": "Week of 05-19", "completed": NaN, "issued": "None", "due_month": "September"}, {"bin": "1031390", "lat": 42.62537202, "lon": -76.17747806, "region": "3", "county": "Cortland", "due": "6/12", "prev_gr": "5", "spans": "6", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "UBIU, WZTC", "spe": "Yes", "stds": "None", "field_time": 4.0, "week": "Week of 05-26", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "1031351", "lat": 42.58639098, "lon": -76.12763296, "region": "3", "county": "Cortland", "due": "6/20", "prev_gr": "4", "spans": "4", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "UBIU, WZTC", "spe": "Yes", "stds": "None", "field_time": 3.0, "week": "Week of 06-09", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "1031352", "lat": 42.58655297, "lon": -76.12711305, "region": "3", "county": "Cortland", "due": "6/20", "prev_gr": "4", "spans": "4", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "Yes", "access_info": "UBIU, WZTC", "spe": "Yes", "stds": "None", "field_time": 3.0, "week": "Week of 06-09", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "3312840", "lat": 43.14161202, "lon": -76.194332, "region": "3", "county": "Onondaga", "due": "6/7", "prev_gr": "7", "spans": "3", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Unscheduled", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "1036600", "lat": 43.46066601, "lon": -76.48845298, "region": "3", "county": "Oswego", "due": "6/7", "prev_gr": "6", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Unscheduled", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "1072890", "lat": 43.1071271, "lon": -76.2514766, "region": "3", "county": "Onondaga", "due": "6/7", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Unscheduled", "completed": NaN, "issued": "None", "due_month": "June"}, {"bin": "1072900", "lat": 43.1057922, "lon": -76.2498515, "region": "3", "county": "Onondaga", "due": "6/16", "prev_gr": "5", "spans": "1", "flags": "No", "flags_info": "None", "posting": "No", "posting_info": "None", "access": "No", "access_info": "None", "spe": "None", "stds": "None", "field_time": 1.0, "week": "Unscheduled", "completed": NaN, "issued": "None", "due_month": "June"}];
+</script>
+    
+<style>
+/* Sidebar modal */
+#bridgeSidebarOverlay {
+    display: none;
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
+#bridgeSidebar {
+    height: 100%;
+    width: 350px; /* set to your desired sidebar width */
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    background-color: #fefefe;
+    overflow-x: hidden;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%); /* hide by default */
+}
+
+#bridgeSidebar.open {
+    transform: translateX(0); /* slide in */
+}
+
+#modal-body {
+    padding: 20px;
+}
+@media (max-width: 500px) {
+    #bridgeSidebar {
+        width: 250px;
+    }
+}
+
+
+/* BIN label style */
+.bin-label {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+
+/* Searchbar */
+#binSearchWrapper {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    z-index: 9999;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+#binSearchInput {
+    width: 160px;
+}
+
+
+/* Toggles */
+#panelHeaderWrapper {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    z-index: 9999;
+    display: flex;
+    gap: 10px;
+}
+.toggle-panel-btn {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Filter Panel */
+#filterPanelWrapper,
+#dueSoonPanelWrapper {
+    position: absolute;
+    top: 115px;
+    left: 10px;
+    z-index: 9998;
+    max-width: 265px;
+}
+
+#filterToggleBtn {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+.toggle-btn {
+    font-size: 11px;
+    margin-left: 8px;
+    padding: 2px 6px;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Main panel style */
+#filterPanel {
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    display: none; /* hidden by default on mobile */
+}
+
+/* Always show panel on desktop */
+@media (min-width: 768px) {
+}
+
+/* Force one checkbox per line */
+#filterPanel label {
+    display: block;
+    margin: 2px 0;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* Make sure each filter category container behaves vertically */
+#filterPanel div[id^="filter-"] {
+    display: block;
+}
+
+/* Due Soon Panel */
+#dueSoonPanel {
+    display: none;
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+#dueSoonPanel input {
+    width: 40px;
+    margin: 0 5px;
+}
+
+@media (min-width: 768px) {
+}
+
+</style>
+
+
+
+
+<!-- Sidebar Modal -->
+<div id="bridgeSidebarOverlay" onclick="closeModal()"></div>
+<div id="bridgeSidebar">
+    <div id="modal-inner">
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- Searchbar -->
+<div id="binSearchWrapper">
+    <input type="text" id="binSearchInput" list="binList" placeholder="Search BIN..." />
+    <datalist id="binList"></datalist>
+</div>
+
+<!-- Filter Panel -->
+<div id="panelHeaderWrapper">
+    <button id="filterToggleBtn" class="toggle-panel-btn">🔽 Filters</button>
+    <button id="dueSoonToggleBtn" class="toggle-panel-btn">🔽 Due Soon</button>
+</div>
+<div id="filterPanelWrapper">
+  <div id="filterPanel">
+    <h4>Active Flags <button class="toggle-btn" data-group="flags">All / None</button></h4>
+    <div id="filter-flags"></div>
+    <h4>Load Posting <button class="toggle-btn" data-group="posting">All / None</button></h4>
+    <div id="filter-posting"></div>
+    <h4>Special Access <button class="toggle-btn" data-group="access">All / None</button></h4>
+    <div id="filter-access"></div>
+    <h4>Field Week <button class="toggle-btn" data-group="week">All / None</button></h4>
+    <div id="filter-week"></div>
+    <h4>Due Month <button class="toggle-btn" data-group="due_month">All / None</button></h4>
+    <div id="filter-due_month"></div>
+  </div>
+</div>
+
+<!-- Due Soon -->
+<div id="dueSoonPanelWrapper">
+  <div id="dueSoonPanel">
+    <label for="dueSoonDays">Show bridges due in next</label>
+    <input type="number" id="dueSoonDays" value="14" min="1" />
+    <span>days</span>
+    <button id="applyDueSoon">Apply</button>
+    <button id="clearDueSoon">Clear</button>
+  </div>
+</div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Due Soon
+    const filterToggleBtn = document.getElementById("filterToggleBtn");
+    const dueSoonToggleBtn = document.getElementById("dueSoonToggleBtn");
+    const filterPanel = document.getElementById("filterPanel");
+    const dueSoonPanel = document.getElementById("dueSoonPanel");
+
+    filterToggleBtn.addEventListener("click", () => {
+        const filterVisible = filterPanel.style.display === "block";
+        const dueSoonVisible = dueSoonPanel.style.display === "block";
+
+        filterPanel.style.display = filterVisible ? "none" : "block";
+        dueSoonPanel.style.display = "none";
+
+        filterToggleBtn.textContent = filterVisible ? "🔽 Filters" : "🔼 Filters";
+        dueSoonToggleBtn.textContent = "🔽 Due Soon";
+
+        // Restore filter-based visibility if filters re-open
+        if (!filterVisible && dueSoonVisible) {
+            updateMarkers();
+            updateBinLabelVisibility();
+        }
+    });
+
+    dueSoonToggleBtn.addEventListener("click", () => {
+        const dueSoonVisible = dueSoonPanel.style.display === "block";
+        const filterVisible = filterPanel.style.display === "block";
+
+        dueSoonPanel.style.display = dueSoonVisible ? "none" : "block";
+        filterPanel.style.display = "none";
+
+        dueSoonToggleBtn.textContent = dueSoonVisible ? "🔽 Due Soon" : "🔼 Due Soon";
+        filterToggleBtn.textContent = "🔽 Filters";
+
+        // Reapply standard filters if due soon was active and now closed
+        if (!dueSoonVisible && filterVisible) {
+            updateMarkers();
+            updateBinLabelVisibility();
+        }
+    });
+
+
+    document.getElementById("applyDueSoon").addEventListener("click", () => {
+        const days = parseInt(document.getElementById("dueSoonDays").value, 10);
+        const today = new Date();
+
+        allMarkers.forEach(({ marker, data }) => {
+            try {
+                const inspected = data.completed && data.completed.trim() !== "";
+                if (inspected) {
+                    map.removeLayer(marker);
+                    return;
+                }
+
+                const dueParts = data.due.split("/");
+                const dueDate = new Date(2025, parseInt(dueParts[0]) - 1, parseInt(dueParts[1]));
+                const diffDays = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
+
+                if (diffDays >= 0 && diffDays <= days) {
+                    map.addLayer(marker);
+                } else {
+                    map.removeLayer(marker);
+                }
+            } catch {
+                map.removeLayer(marker);  // hide if bad/missing date
+            }
+        });
+
+        updateBinLabelVisibility();  // keep labels in sync
+    });
+
+
+    document.getElementById("clearDueSoon").addEventListener("click", () => {
+        updateMarkers(); // restores based on main filter logic
+        updateBinLabelVisibility();
+    });
+
+    
+    // Searchbar
+    const input = document.getElementById("binSearchInput");
+    const datalist = document.getElementById("binList");
+
+    input.addEventListener("input", function () {
+        const value = input.value.trim();
+        datalist.innerHTML = "";
+
+        if (value.length >= 3) {
+            const matches = bridgeData
+                .filter(({ bin }) => bin.startsWith(value))
+                .slice(0, 50);
+
+            matches.forEach(({ bin }) => {
+                const opt = document.createElement("option");
+                opt.value = bin;
+                datalist.appendChild(opt);
+            });
+        }
+    });
+    input.addEventListener("change", function () {
+        const value = input.value.trim();
+        const match = bridgeData.find(b => b.bin === value);
+        if (match) {
+            map.setView([match.lat, match.lon], 16);
+        } else {
+            alert("BIN not found on map.");
+        }
+    });
+    const map = Object.values(window).find(m => m instanceof L.Map);
+    const markers = [];
+
+
+    // Label visibility control
+    function updateBinLabelVisibility() {
+        const visible = map.getZoom() >= 11;
+        document.querySelectorAll('.bin-label').forEach(el => {
+            el.style.display = visible ? 'inline-block' : 'none';
+        });
+    }
+
+    map.on("zoomend", updateBinLabelVisibility);
+    map.whenReady(updateBinLabelVisibility);
+
+
+    // Modal open/close
+    window.showModal = function(bin) {
+        const b = bridgeData.find(d => d.bin === bin);
+        if (!b) return;
+        const inspected = b.completed && b.completed.trim() !== "";
+
+        const html = `
+            <span style="font-size:16px;"><b><u>${b.bin}</u></b></span><br>
+            <b>Coordinates:</b> <a href="https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lon}" target="_blank" style="color:#1976d2;">${b.lat.toFixed(4)}, ${b.lon.toFixed(4)}</a><br>
+            <b>Region:</b> ${b.region}<br>
+            <b>County:</b> ${b.county}<br>
+            <b>Due Date:</b> ${b.due}/25<br>
+            <b>Previous Gen Rec:</b> ${b.prev_gr}<br>
+            <b>Spans:</b> ${b.spans}<br>
+            <b>Active Flags:</b> ${b.flags_info}<br>
+            <b>Load Posting:</b> ${b.posting_info}<br>
+            <b>Estimated Field Time:</b> ${b.field_time} hours<br>
+            <b>Special Access:</b> ${b.access_info}<br>
+            <b>Special Emphasis:</b> ${b.spe}<br>
+            <b>New Standards:</b> ${b.stds}<br><br>
+            ${inspected ? `<b>Inspection Completed Date:</b> ${b.completed}<br>` : ""}
+            ${inspected ? `<b>Flags Issued:</b> ${b.issued}<br>` : ""}
+        `;
+            document.getElementById("modal-body").innerHTML = html;
+            const sidebar = document.getElementById("bridgeSidebar");
+            sidebar.classList.add("open");
+            document.getElementById("bridgeSidebarOverlay").style.display = "block";
+    };
+
+    window.closeModal = function() {
+        document.getElementById("bridgeSidebar").classList.remove("open");
+        document.getElementById("bridgeSidebarOverlay").style.display = "none";
+    };
+
+
+
+    //Filtering
+    const filters = {
+        flags: new Set(),
+        posting: new Set(),
+        access: new Set(),
+        week: new Set(),
+        due_month: new Set()
+    };
+
+    const allMarkers = [];
+
+    function createCheckbox(containerId, groupKey, values) {
+        const container = document.getElementById(containerId);
+        values.forEach(val => {
+            const safeId = `${containerId}-${val.replace(/\W+/g, "_")}`;
+            const label = document.createElement("label");
+            label.innerHTML = `<input type="checkbox" id="${safeId}" value="${val}" data-group="${groupKey}" checked> ${val}`;
+            container.appendChild(label);
+            filters[groupKey].add(val);  // start with everything selected
+        });
+    }
+
+    // Gather unique values from bridgeData
+    const unique = { flags: new Set(), posting: new Set(), access: new Set(), week: new Set(), due_month: new Set() };
+    bridgeData.forEach(b => {
+        unique.flags.add(b.flags);
+        unique.posting.add(b.posting);
+        unique.access.add(b.access);
+        unique.week.add(b.week);
+        unique.due_month.add(b.due_month);
+    });
+
+    const monthOrder = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    function sortMonths(monthSet) {
+        return Array.from(monthSet).sort(
+            (a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b)
+        );
+    }
+
+    function sortWeeks(weekSet) {
+        return Array.from(weekSet).sort((a, b) => {
+            const dateA = new Date("2025/" + a.replace("Week of ", ""));
+            const dateB = new Date("2025/" + b.replace("Week of ", ""));
+            return dateA - dateB;
+        });
+    }
+
+    function pushUnscheduledToEnd(arr) {
+        return arr.filter(v => v !== "Unscheduled").concat(
+            arr.includes("Unscheduled") ? ["Unscheduled"] : []
+        );
+    }
+
+    createCheckbox("filter-flags", "flags", unique.flags);
+    createCheckbox("filter-posting", "posting", unique.posting);
+    createCheckbox("filter-access", "access", unique.access);
+    createCheckbox("filter-week", "week", pushUnscheduledToEnd(sortWeeks(unique.week)));
+    createCheckbox("filter-due_month", "due_month", sortMonths(unique.due_month));
+
+
+
+    // Function to check if a bridge passes all current filters
+    function passesFilters(b) {
+        return (
+            filters.flags.has(b.flags) &&
+            filters.posting.has(b.posting) &&
+            filters.access.has(b.access) &&
+            filters.week.has(b.week) &&
+            filters.due_month.has(b.due_month)
+        );
+    }
+
+    function updateMarkers() {
+        allMarkers.forEach(({ marker, data }) => {
+            if (passesFilters(data)) {
+                if (!map.hasLayer(marker)) map.addLayer(marker);
+            } else {
+                if (map.hasLayer(marker)) map.removeLayer(marker);
+            }
+        });
+    }
+
+    // Hook up individual checkbox behavior
+    document.querySelectorAll("#filterPanel input[type=checkbox]").forEach(cb => {
+        cb.addEventListener("change", () => {
+            const group = cb.dataset.group;
+            const val = cb.value;
+            if (cb.checked) {
+                filters[group].add(val);
+            } else {
+                filters[group].delete(val);
+            }
+            updateMarkers();
+            updateBinLabelVisibility();  // keep labels in sync
+        });
+    });
+
+    //Hook up All/None button behavior
+    document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const group = btn.dataset.group;
+            const checkboxes = document.querySelectorAll(`#filter-${group} input[type=checkbox]`);
+
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+
+            filters[group] = new Set();  // reset group
+
+            checkboxes.forEach(cb => {
+                cb.checked = !allChecked;
+                if (!allChecked) {
+                    filters[group].add(cb.value);
+                }
+            });
+
+            updateMarkers();
+            updateBinLabelVisibility();
+        });
+    });
+
+
+    // Marker + popup creation
+    bridgeData.forEach(b => {
+        const inspected = b.completed && b.completed.trim() !== "";
+        const icon = L.AwesomeMarkers.icon({
+            icon: inspected ? "check" : "flag",
+            prefix: "fa",
+            markerColor: inspected ? "green" : "blue"
+        });
+
+        const popup = `
+            <span style="font-size:16px;"><b><u>${b.bin}</u></b></span><br>
+            <b>Coordinates:</b> <a href="https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lon}" target="_blank" style="color:#1976d2;">${b.lat.toFixed(4)}, ${b.lon.toFixed(4)}</a><br>
+            <b>New Standards:</b> ${b.stds}<br>
+            <b>Due Date:</b> ${b.due}/25<br>
+            <b>Active Flags:</b> ${b.flags}<br>
+            <b>Load Posting:</b> ${b.posting_label}<br>
+            <a href="#" onclick="showModal('${b.bin}'); return false;">See more…</a>
+        `;
+
+        const marker = L.marker([b.lat, b.lon], { icon })
+            .bindTooltip(b.bin, { permanent: true, direction: 'right', className: 'bin-label' })
+            .bindPopup(popup);
+
+        marker.addTo(map);
+        allMarkers.push({ marker, data: b });
+    });
+
+    updateBinLabelVisibility();
+    updateMarkers();  // ensure correct initial state
+});
+</script>
+    
+            <div class="folium-map" id="map_d0ea9f7b94048502c9d6ac5c9d6a0d0e" ></div>
+        
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log("✅ Service Worker registered"))
+    .catch(err => console.error("Service Worker failed:", err));
+}
+</script>
+</body>
+<script>
+    
+    
+            var map_d0ea9f7b94048502c9d6ac5c9d6a0d0e = L.map(
+                "map_d0ea9f7b94048502c9d6ac5c9d6a0d0e",
+                {
+                    center: [43.0, -75.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d2a6b0bda31fe79deb45d964bfc6c853 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d2a6b0bda31fe79deb45d964bfc6c853.addTo(map_d0ea9f7b94048502c9d6ac5c9d6a0d0e);
+        
+</script>
+</html>
